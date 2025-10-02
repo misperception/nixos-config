@@ -20,6 +20,7 @@ let
   virtualisationModules = (map (path: ./virtualisation + path)[
     /virtualbox.nix
   ]);
+  hardwareConfiguration = [ ./hardware/config/misper-laptop/hardware-configuration.nix ];
 in {
   imports = 
     bootModules ++
@@ -27,6 +28,7 @@ in {
     connectionModules ++
     displayManagers ++
     graphicsModules ++
+    hardwareConfiguration ++
     keyboardModules ++
     virtualisationModules;
 
