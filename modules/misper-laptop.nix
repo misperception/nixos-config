@@ -1,7 +1,7 @@
 let 
   bootModules = ( map (path: ./boot + path) [
-    /tuigreet.nix
-    /plymouth/plymouth-blahaj.nix
+    /gdm.nix
+    /plymouth/plymouth-catppuccin.nix
   ]);
   catppuccin = [ ./catppuccin ];
   connectionModules = (map (path: ./connection + path)[
@@ -11,20 +11,14 @@ let
     /gnome
     /sway
   ]);
-  docker = [ ./docker ];
-  drives = [ ./drives/misper-pc ];
-  gamingModules = (map (path: ./gaming + path)[
-    /steam.nix
-  ]);
   graphicsModules = (map (path: ./graphics + path) [
-    /nvidia.nix
+    /intel.nix
   ]);
   keyboardModules = (map (path: ./keyboard + path)[
-    /qmk.nix
     /layout.nix
   ]);
   virtualisationModules = (map (path: ./virtualisation + path)[
-    /virt-manager.nix
+    /virtualbox.nix
   ]);
 in {
   imports = 
@@ -32,25 +26,12 @@ in {
     catppuccin ++
     connectionModules ++
     displayManagers ++
-    docker ++
-    drives ++
-    gamingModules ++
     graphicsModules ++
     keyboardModules ++
     virtualisationModules;
 
     networking.firewall = {
-      allowedTCPPorts = [
-        161
-        162
-        8023
-        9100
-        11476
-      ];
-      allowedUDPPorts = [
-        161
-        162
-        9100
-      ];
+      allowedTCPPorts = [];
+      allowedUDPPortRanges = [];
     };
 }

@@ -104,18 +104,6 @@
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 
-      161
-      162
-      8023 
-      9100 
-      11470
-    ];
-    allowedUDPPorts = [
-      161 
-      162 
-      9100
-    ];
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
@@ -134,7 +122,7 @@
   # Run the store optimisation service.
   nix.optimise = {
     automatic = true;
-    dates = [ "20:00" ];
+    dates = [ "20:00" "11:00" ];
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
