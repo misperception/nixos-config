@@ -26,6 +26,7 @@ let
   virtualisationModules = (map (path: ./virtualisation + path)[
     /virt-manager.nix
   ]);
+  hardwareConfiguration = [ ./hardware/config/misper-pc/hardware-configuration.nix ];
 in {
   imports = 
     bootModules ++
@@ -36,6 +37,7 @@ in {
     drives ++
     gamingModules ++
     graphicsModules ++
+    hardwareConfiguration ++
     keyboardModules ++
     virtualisationModules;
 

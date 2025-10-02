@@ -2,9 +2,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules/boot
+    [
+       ./modules/boot
       ./modules/connection/bluetooth
       ./modules/connection/mtp
       ./modules/graphics
