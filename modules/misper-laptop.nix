@@ -19,6 +19,7 @@ let
   ]);
   virtualisationModules = (map (path: ./virtualisation + path)[
     /virtualbox.nix
+    /virt-manager.nix
   ]);
   hardwareConfiguration = [ ./hardware/config/misper-laptop/hardware-configuration.nix ];
 in {

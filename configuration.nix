@@ -3,13 +3,13 @@
 {
   imports =
     [
-       ./modules/boot
+      ./modules/boot
       ./modules/connection/bluetooth
       ./modules/connection/mtp
       ./modules/graphics
     ];
 
-  # Enable unfree packages (for NVIDIA drivers)
+  # Enable unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Enable flakes
@@ -25,10 +25,6 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -63,7 +59,7 @@
 
   users.users.misper = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "input" ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -94,11 +90,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall = {
