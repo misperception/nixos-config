@@ -12,8 +12,7 @@
   };
 
   services.xserver.xkb = {
-    layout = "us,jp";
-    variant = "altgr-intl,";
-    options = "grp:alt_shift_toggle";
+    layout = "us";
+    variant = "altgr-intl";
   };
 }
