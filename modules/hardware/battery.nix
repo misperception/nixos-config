@@ -10,7 +10,7 @@
     enable = true;
     settings = {
       CPU_MAX_PERF_ON_AC = 100;
-      CPU_MAX_PERF_ON_BAT = 50;
+      CPU_MAX_PERF_ON_BAT = 66;
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
       CPU_BOOST_ON_AC = 1;
