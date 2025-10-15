@@ -11,6 +11,7 @@ let
     /gnome
     /sway
   ]);
+  docker = [ ./docker ];
   graphicsModules = (map (path: ./graphics + path) [
     /intel.nix
   ]);
@@ -28,6 +29,7 @@ in {
     catppuccin ++
     connectionModules ++
     displayManagers ++
+    docker ++
     graphicsModules ++
     hardwareConfiguration ++
     keyboardModules ++
