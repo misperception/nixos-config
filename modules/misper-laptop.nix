@@ -15,6 +15,9 @@ let
   graphicsModules = (map (path: ./graphics + path) [
     /intel.nix
   ]);
+  hardwareModules = (map (path: ./hardware + path) [
+    /battery.nix
+  ]);
   keyboardModules = (map (path: ./keyboard + path)[
     /layout.nix
   ]);
@@ -31,6 +34,7 @@ in {
     displayManagers ++
     docker ++
     graphicsModules ++
+    hardwareModules ++
     hardwareConfiguration ++
     keyboardModules ++
     virtualisationModules;
