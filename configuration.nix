@@ -44,6 +44,7 @@
   services.flatpak.enable = true;
   # Enable AppImage support.
   programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
   
   # Enable I2C devices.
   hardware.i2c.enable = true;
