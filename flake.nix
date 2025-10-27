@@ -23,6 +23,13 @@
           ./modules/misper-laptop.nix
         ];
       };
+      misper-server = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./modules/misper-server.nix
+        ];
+      };
     };
   };
 }

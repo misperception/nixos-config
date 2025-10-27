@@ -30,6 +30,17 @@
       seahorse # GNOME Passwords & Keys
     ]
   );
+  # Disable XTerm
+  services.xserver.excludePackages = with pkgs; [ xterm ];
+  # Enable Kitty for .desktop entries
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = [
+        "kitty.desktop"
+      ];
+    };
+  };
 
   # Configure Nautilus (GNOME Files)
   programs.nautilus-open-any-terminal = {
