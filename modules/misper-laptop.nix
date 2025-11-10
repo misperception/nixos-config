@@ -11,7 +11,6 @@ let
     /gnome
     /sway
   ]);
-  docker = [ ./docker ];
   graphicsModules = (map (path: ./graphics + path) [
     /intel.nix
   ]);
@@ -24,6 +23,7 @@ let
   virtualisationModules = (map (path: ./virtualisation + path)[
     /virtualbox.nix
     /virt-manager.nix
+    /docker.nix
   ]);
   hardwareConfiguration = [ ./hardware/config/misper-laptop/hardware-configuration.nix ];
 in {
@@ -32,7 +32,6 @@ in {
     catppuccin ++
     connectionModules ++
     displayManagers ++
-    docker ++
     graphicsModules ++
     hardwareModules ++
     hardwareConfiguration ++

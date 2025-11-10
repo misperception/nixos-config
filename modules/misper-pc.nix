@@ -11,7 +11,6 @@ let
     /gnome
     /sway
   ]);
-  docker = [ ./docker ];
   drives = [ ./drives/misper-pc ];
   gamingModules = (map (path: ./gaming + path)[
     /steam.nix
@@ -25,6 +24,7 @@ let
   ]);
   virtualisationModules = (map (path: ./virtualisation + path)[
     /virt-manager.nix
+    /docker.nix
   ]);
   hardwareConfiguration = [ ./hardware/config/misper-pc/hardware-configuration.nix ];
 in {
@@ -33,7 +33,6 @@ in {
     catppuccin ++
     connectionModules ++
     displayManagers ++
-    docker ++
     drives ++
     gamingModules ++
     graphicsModules ++
