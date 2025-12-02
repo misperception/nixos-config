@@ -3,10 +3,10 @@
   # Add sway to the session list (configuration overriden by home-manager)
   programs.sway = {
     enable = true;
-    package = pkgs.swayfx;
-    extraOptions = [ "--unsupported-gpu" ];
+    package = null;
     extraPackages = [];
   };
+
   # Enable PAM for swaylock
   security.pam.services.swaylock = {
     enable = true;

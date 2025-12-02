@@ -1,6 +1,6 @@
 let 
   bootModules = ( map (path: ./boot + path) [
-    /tuigreet.nix
+    /ly.nix
     /plymouth/plymouth-blahaj.nix
   ]);
   catppuccin = [ ./catppuccin ];
@@ -44,6 +44,7 @@ in {
       allowedTCPPorts = [
         161
         162
+	      8006
         8023
         9100
         11476
