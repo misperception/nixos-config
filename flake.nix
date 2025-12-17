@@ -11,24 +11,17 @@
       misper-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
-          ./configuration.nix
+          ./options
           catppuccin.nixosModules.catppuccin
-          ./modules/misper-pc.nix
+          ./devices/misper-pc
         ]; 
       };
       misper-laptop = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./options
           catppuccin.nixosModules.catppuccin
-          ./modules/misper-laptop.nix
-        ];
-      };
-      misper-server = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          ./modules/misper-server.nix
+          ./devices/misper-laptop
         ];
       };
     };
