@@ -5,13 +5,13 @@ in {
     enable = mkEnableOption "Enable GRUB";
   };
   config = mkIf cfg.enable {
+    boot.loader.efi.canTouchEfiVariables = true;
     boot.loader.grub = {
       enable = mkForce true;
       efiSupport = true;
       device = lib.mkDefault "nodev";
       useOSProber = true;
       splashMode = "normal";
-      backgroundColor = lib.mkDefault "#1e1e2e";
     };
     boot.kernelParams = lib.mkDefault [ "quiet" "splash" ];
   };
