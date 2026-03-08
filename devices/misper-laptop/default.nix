@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -19,7 +20,7 @@
       zsh = true;
     };
     boot = {
-      ly.enable = true;
+      gdm.enable = true;
       plymouth = {
         enable = true;
         catppuccin.enable = true;
@@ -80,4 +81,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "input" ];
   };
+
+  services.fwupd.enable = true;
 }

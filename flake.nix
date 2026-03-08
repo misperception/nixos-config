@@ -23,7 +23,7 @@
           ./devices/misper-pc
         ]; 
       };
-      misper-laptop = inputs.nixpkgs-stable.lib.nixosSystem {
+      misper-laptop = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./options
