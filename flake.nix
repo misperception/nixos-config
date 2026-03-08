@@ -4,6 +4,14 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    arion = {
+      url = "github:hercules-ci/arion";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    copyparty = {
+      url = "github:9001/copyparty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     catppuccin = {
@@ -35,7 +43,9 @@
         system = "x86_64-linux";
         modules = [
           inputs.agenix.nixosModules.default
+          inputs.arion.nixosModules.arion
           inputs.catppuccin.nixosModules.catppuccin
+          inputs.copyparty.nixosModules.default
           inputs.github-nix-ci.nixosModules.default
           ./options
           ./devices/misper-server

@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+    ./hardware-configuration.nix
+    ./arion.nix
+    ./services.nix
+  ];
   misper = {
     base = {
       firstVersion = "25.05";
@@ -21,16 +25,17 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "input" ];
   };
-  services.github-nix-ci = {
-    age.secretsDir = ./secrets;
-    personalRunners = {
-      "misperception/estanteria-bot".num = 1;
-    };
-  };
   boot.kernelParams = [ "quiet" "splash" "consoleblank=10" ];         
-  environment.systemPackages = with pkgs; [ neovim ];
-  services.logind = {                                        
-    lidSwitch = "ignore";                                    
-    lidSwitchExternalPower = "ignore";                       
+  environment.systemPackages = with pkgs; [ neovim gh lazydocker zoxide ];
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+  environment.shellAliases = {
+    switch = "sudo nixos-rebuild switch --flake /etc/nixos#misper-server";
+  };
+  services.logind.settings.Login = {                                        
+    HandleLidSwitch = "ignore";                                    
+    HandleLidSwitchExternalPower = "ignore";                       
   };
 }
