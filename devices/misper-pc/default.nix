@@ -56,7 +56,6 @@ in {
           system-monitor # Resource usage
           removable-drive-menu
           user-themes
-          rounded-window-corners-reborn
         ];
         minimal = true;
         enableKittySupport = true;

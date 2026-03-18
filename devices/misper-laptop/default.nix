@@ -40,10 +40,12 @@
         enable = true;
         extensions = with pkgs.gnomeExtensions; [ 
           appindicator # System tray icons
-          system-monitor # Resource usage
+          blur-my-shell
+          dash2dock-lite
+          lockscreen-extension
           removable-drive-menu
+          system-monitor # Resource usage
           user-themes
-          rounded-window-corners-reborn
         ];
         minimal = true;
         enableKittySupport = true;
