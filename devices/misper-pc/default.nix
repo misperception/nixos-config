@@ -39,7 +39,6 @@ in {
       };
     };
     connection = {
-      bluetooth.package = pkgs.blueberry;
       printing = {
         enable = true;
         autodiscovery = true;

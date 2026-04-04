@@ -5,7 +5,7 @@ in {
     enable = mkEnableOption "Bluetooth";
     package = mkOption {
       type = types.package;
-      default = pkgs.blueberry;
+      default = pkgs.blueman;
     };
   };
   config = mkIf cfg.enable {
