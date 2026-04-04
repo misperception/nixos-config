@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   makeDrive = root: {
     device = "/dev/disk/by-uuid/${root}";
@@ -70,6 +70,7 @@ in {
     hardware.graphics.nvidia = {
       enable = true;
       enable32Bit = true;
+      driver = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     };
     keyboard = {
       layoutVariant = "altgr-intl";
@@ -87,6 +88,8 @@ in {
       virt-manager.enable = true;
     };
   };
+
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.legacy_580 ];
 
   catppuccin = {
     enable = true;
@@ -109,7 +112,7 @@ in {
       9100
     ];
   };
-  
+
   users.users.misper = {
     isNormalUser = true;
     extraGroups = [ "wheel" "input" ];
