@@ -31,5 +31,31 @@
         };
       };
     };
+    media-server.settings.services = {
+      qbittorrent.service = let 
+        WEBUI_PORT = 9200;
+        TORRENTING_PORT = 9201;
+      in {
+        image = "lscr.io/linuxserver/qbittorrent:latest";
+        container_name = "qbittorrent";
+        restart = "unless-stopped";
+        volumes = [
+          "/home/misper/media-server/config/qbittorrent:/config"
+          "/home/misper/media-server/downloads:/downloads"
+        ];
+        environment = {
+          PUID=1000;
+          PGID=1000;
+          Tz="Europe/Madrid";
+          WEBUI_PORT=WEBUI_PORT;
+          TORRENTING_PORT=TORRENTING_PORT;
+        };
+        ports = [
+          "${toString WEBUI_PORT}:${toString WEBUI_PORT}"
+          "${toString TORRENTING_PORT}:${toString TORRENTING_PORT}"
+          "${toString TORRENTING_PORT}:${toString TORRENTING_PORT}/udp"
+        ];
+      };
+    };
   };
 }

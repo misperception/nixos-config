@@ -8,15 +8,15 @@
       url = "github:hercules-ci/arion";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    copyparty = {
-      url = "github:9001/copyparty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccin-stable = {
+      url = "github:catppuccin/nix?ref=release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     github-nix-ci.url = "github:juspay/github-nix-ci";
   };
@@ -44,9 +44,8 @@
         modules = [
           inputs.agenix.nixosModules.default
           inputs.arion.nixosModules.arion
-          inputs.catppuccin.nixosModules.catppuccin
-          inputs.copyparty.nixosModules.default
           inputs.github-nix-ci.nixosModules.default
+          inputs.catppuccin-stable.nixosModules.catppuccin
           ./options
           ./devices/misper-server
           { environment.systemPackages = [inputs.agenix.packages.${system}.default]; }
