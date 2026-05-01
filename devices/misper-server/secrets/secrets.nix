@@ -4,4 +4,5 @@ in {
   "github-nix-ci/misperception.token.age".publicKeys = [ misper-server ];
   "estanteria-bot.age".publicKeys = [ misper-server ];
   "vapbot.age".publicKeys = [ misper-server ];
+  "plex.age".publicKeys = [ misper-server ];
 }
