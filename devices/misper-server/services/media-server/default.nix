@@ -1,4 +1,9 @@
-{
+let
+  defaultOptions = {
+    enable = true;
+    openFirewall = true;
+  }; 
+in {
   imports = [
     ./options
   ];
@@ -8,33 +13,12 @@
     timezone = "Europe/Madrid";
     configDir = "/media-server/config";
     dataDir = "/media-server/data";
-    qbittorrent = {
-      enable = true;
-      openFirewall = true;
-    };
-    prowlarr = {
-      enable = true;
-      openFirewall = true;
-    };
-    sonarr = {
-      enable = true;
-      openFirewall = true;
-    };
-    radarr = {
-      enable = true;
-      openFirewall = true;
-    };
-    seerr = {
-      enable = true;
-      openFirewall = true;
-    };
-    jellyfin = {
-      enable = true;
-      openFirewall = true;
-    };
-    maintainerr = {
-      enable = true;
-      openFirewall = true;
-    };
+    qbittorrent = defaultOptions // { qui.enable = true; };
+    prowlarr = defaultOptions;
+    sonarr = defaultOptions;
+    radarr = defaultOptions;
+    seerr = defaultOptions;
+    jellyfin = defaultOptions;
+    maintainerr = defaultOptions;
   };
 }
