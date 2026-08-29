@@ -12,7 +12,6 @@ in {
     enable = mkEnableOption "Enable Blåhaj animation for Plymouth";
   };
   config = mkIf (parent.enable && cfg.enable) {
-    catppuccin.plymouth.enable = mkForce false;
     boot.plymouth = {
       theme = mkForce "blahaj";
       themePackages = mkForce [ catppuccin-blahaj-theme ];

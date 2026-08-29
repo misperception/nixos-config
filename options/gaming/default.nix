@@ -2,5 +2,4 @@
   imports = [
     ./steam.nix
   ];
-  config = {};
 }

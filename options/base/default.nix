@@ -12,7 +12,7 @@ in {
         git
         fzf
         icu
-        wineWowPackages.base
+        wineWow64Packages.base
       ];
     };
     firstVersion = mkOption {
