@@ -14,16 +14,12 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin-stable = {
-      url = "github:catppuccin/nix?ref=release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
     github-nix-ci.url = "github:juspay/github-nix-ci";
   };
 
-  outputs = inputs: {
+  outputs = { nixpkgs, ... } @inputs: {
     nixosConfigurations = {
-      misper-pc = inputs.nixpkgs.lib.nixosSystem {
+      misper-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
           ./options
@@ -31,7 +27,7 @@
           ./devices/misper-pc
         ]; 
       };
-      misper-laptop = inputs.nixpkgs.lib.nixosSystem {
+      misper-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./options
@@ -45,7 +41,6 @@
           inputs.agenix.nixosModules.default
           inputs.arion.nixosModules.arion
           inputs.github-nix-ci.nixosModules.default
-          inputs.catppuccin-stable.nixosModules.catppuccin
           ./options
           ./devices/misper-server
           { environment.systemPackages = [inputs.agenix.packages.${system}.default]; }
