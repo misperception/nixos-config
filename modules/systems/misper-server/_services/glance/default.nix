@@ -1,7 +1,7 @@
 { config, ... }:
 {
   age.secrets = {
-    glance.file = ../../secrets/glance.age;
+    glance.file = ../../_secrets/glance.age;
   };
   services.glance = {
     enable = true;

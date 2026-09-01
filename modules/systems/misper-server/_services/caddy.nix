@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   age.secrets = {
-    caddy.file = ../secrets/caddy.age;
+    caddy.file = ../_secrets/caddy.age;
   };
   services.caddy = let
       domain = "misper-server.net"; 

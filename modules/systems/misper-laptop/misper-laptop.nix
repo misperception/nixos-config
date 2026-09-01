@@ -10,7 +10,7 @@
 
   flake.nixosModules.misper-laptop = { pkgs, ... }: {
     imports = [
-      ./hardware-configuration.nix
+      ./_hw/hardware-configuration.nix
     ];
 
     misper = {

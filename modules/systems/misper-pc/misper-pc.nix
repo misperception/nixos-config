@@ -18,7 +18,7 @@
     };
   in {
     imports = [
-      ./hardware-configuration.nix
+      ./_hw/hardware-configuration.nix
     ];
 
     fileSystems = {

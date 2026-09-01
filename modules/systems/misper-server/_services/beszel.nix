@@ -1,7 +1,7 @@
 { config, ... }:
 {
   age.secrets = {
-    beszel.file = ../secrets/beszel.age;
+    beszel.file = ../_secrets/beszel.age;
   };
   services.beszel = {
     hub = {

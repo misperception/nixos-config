@@ -1,8 +1,8 @@
 { config, ... }:
 {
   age.secrets = {
-    estanteria-bot.file = ../../secrets/estanteria-bot.age;
-    vapbot.file = ../../secrets/vapbot.age;
+    estanteria-bot.file = ../../_secrets/estanteria-bot.age;
+    vapbot.file = ../../_secrets/vapbot.age;
   };
   virtualisation.arion.backend = "docker";
   virtualisation.arion.projects = {
