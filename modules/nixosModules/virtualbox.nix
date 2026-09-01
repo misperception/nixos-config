@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.customConfig = { config, lib, ... }: with lib;
+  flake.nixosModules.customOptions = { config, lib, ... }: with lib;
   let 
     cfg = config.misper.virtualization.virtualbox;
   in {

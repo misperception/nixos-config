@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.customConfig ={ pkgs, config, lib, ... }: with lib;
+  flake.nixosModules.customOptions = { pkgs, config, lib, ... }: with lib;
   let
     cfg = config.misper.keyboard;
   in {
