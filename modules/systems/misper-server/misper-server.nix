@@ -13,7 +13,7 @@
 
   flake.nixosModules.misper-server = { pkgs, ... }: {
     imports = [ 
-      ./_hw/hardware-configuration.nix
+      ./hardware-configuration.nix
       ./_services
     ];
     misper = {
