@@ -6,7 +6,6 @@ in {
   };
   imports = [
     ./plymouth-blahaj.nix
-    ./plymouth-catppuccin.nix
   ];
   config = mkIf cfg.enable {
     boot.plymouth.enable = mkForce true;

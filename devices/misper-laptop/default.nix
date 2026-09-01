@@ -23,7 +23,6 @@
       gdm.enable = true;
       plymouth = {
         enable = true;
-        catppuccin.enable = true;
       };
     };
     connection = {
