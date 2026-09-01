@@ -21,5 +21,5 @@
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } 
-    (inputs.import-tree.filterNot (inputs.nixpkgs.lib.hasSuffix "hardware_configuration.nixs") ./modules);
+    (inputs.import-tree.filterNot (inputs.nixpkgs.lib.hasSuffix "hardware-configuration.nix") ./modules);
 }
