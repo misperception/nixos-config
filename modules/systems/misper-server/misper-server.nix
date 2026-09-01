@@ -11,7 +11,7 @@
     ];
   };
 
-  flake.nixosModule.misper-server = { pkgs, ... }: {
+  flake.nixosModules.misper-server = { pkgs, ... }: {
     imports = [ 
       ./_hw/hardware-configuration.nix
       ./_services
