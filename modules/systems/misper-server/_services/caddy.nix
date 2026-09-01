@@ -7,9 +7,7 @@
       domain = "misper-server.net"; 
     in {
     enable = true;
-    user = "root";
-    group = "root";
-    dataDir = "/media-server/config/caddy";
+    # change once i get an actual working domain
     acmeCA = "https://acme-staging-v02.api.letsencrypt.org/directory";
     environmentFile = config.age.secrets.caddy.path;
     email = "{\$EMAIL}";
