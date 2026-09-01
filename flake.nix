@@ -15,37 +15,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     github-nix-ci.url = "github:juspay/github-nix-ci";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:denful/import-tree";
   };
 
-  outputs = { nixpkgs, ... } @inputs: {
-    nixosConfigurations = {
-      misper-pc = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ 
-          ./options
-          inputs.catppuccin.nixosModules.catppuccin
-          ./devices/misper-pc
-        ]; 
-      };
-      misper-laptop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./options
-          inputs.catppuccin.nixosModules.catppuccin
-          ./devices/misper-laptop
-        ];
-      };
-      misper-server = inputs.nixpkgs-stable.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        modules = [
-          inputs.agenix.nixosModules.default
-          inputs.arion.nixosModules.arion
-          inputs.github-nix-ci.nixosModules.default
-          ./options
-          ./devices/misper-server
-          { environment.systemPackages = [inputs.agenix.packages.${system}.default]; }
-        ];
-      };
-    };
+  outputs = inputs: {
+    inputs.flake-parts.lib.mkFlake { inherit inputs; }
+     (inputs.import-tree ./modules);
   };
 }
