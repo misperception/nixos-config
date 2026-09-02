@@ -3,7 +3,6 @@
     system = "x86_64-linux";
     modules = [
       inputs.agenix.nixosModules.default
-      inputs.arion.nixosModules.arion
       inputs.github-nix-ci.nixosModules.default
       self.nixosModules.customOptions
       self.nixosModules.misper-server

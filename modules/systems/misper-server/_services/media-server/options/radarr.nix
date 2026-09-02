@@ -11,11 +11,10 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    virtualisation.arion.projects.media-server.settings.services.radarr.service = {
-      container_name = "radarr";
+    virtualisation.oci-containers.containers.radarr = {
+      serviceName = "radarr";
       image = "ghcr.io/hotio/radarr";
-      restart = "unless-stopped";
-      network_mode = mkIf root.hostMode "host";
+      extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = root.uid;
         PGID = root.gid;

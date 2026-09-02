@@ -11,12 +11,11 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    virtualisation.arion.projects.media-server.settings.services.maintainerr.service = {
-      container_name = "maintainerr";
+    virtualisation.oci-containers.containers.maintainerr = {
+      serviceName = "maintainerr";
       image = "ghcr.io/maintainerr/maintainerr:latest";
-      restart = "unless-stopped";
       user = "${toString root.uid}:${toString root.gid}";
-      network_mode = mkIf root.hostMode "host";
+      extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         WEBUI_PORTS = "${toString cfg.port}/tcp";
         TZ = root.timezone;

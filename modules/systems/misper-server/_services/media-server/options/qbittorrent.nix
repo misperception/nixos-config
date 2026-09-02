@@ -21,12 +21,11 @@ in {
     qui.enable = mkEnableOption "Enable Qui, a dashboard and manager for remote torrent clients";
   };
   config = mkIf cfg.enable {
-    virtualisation.arion.projects.media-server.settings.services = {
-      qbittorrent.service = {
-        container_name = "qbittorrent";
+    virtualisation.oci-containers.containers = {
+      qbittorrent = {
+        serviceName = "qbittorrent";
         image = "lscr.io/linuxserver/qbittorrent:latest";
-        restart = "unless-stopped";
-        network_mode = mkIf root.hostMode "host";
+        extraOptions = mkIf root.hostMode [ "--network=host" ];
         environment = common-config // {
           WEBUI_PORT = (if !cfg.qui.enable then cfg.ports.webui else 8055);
           TORRENTING_PORT = cfg.ports.torrenting;
@@ -41,11 +40,10 @@ in {
           "${toString cfg.ports.torrenting}:${toString cfg.ports.torrenting}/udp"
         ];
       };
-      qui.service = mkIf cfg.qui.enable {
-        container_name = "qui";
+      qui = mkIf cfg.qui.enable {
+        serviceName = "qui";
         image = "ghcr.io/hotio/qui";
-        restart = "unless-stopped";
-        network_mode = mkIf root.hostMode "host";
+        extraOptions = mkIf root.hostMode [ "--network=host" ];
         environment = common-config // {
           WEBUI_PORTS = "${toString cfg.ports.webui}/tcp";
         };

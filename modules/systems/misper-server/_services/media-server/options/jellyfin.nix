@@ -11,11 +11,10 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    virtualisation.arion.projects.media-server.settings.services.jellyfin.service = {
-      container_name = "jellyfin";
+    virtualisation.oci-containers.containers.jellyfin = {
+      serviceName = "jellyfin";
       image = "ghcr.io/hotio/jellyfin";
-      restart = "unless-stopped";
-      network_mode = mkIf root.hostMode "host";
+      extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = root.uid;
         PGID = root.gid;

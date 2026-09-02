@@ -11,11 +11,10 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    virtualisation.arion.projects.media-server.settings.services.prowlarr.service = {
-      container_name = "prowlarr";
+    virtualisation.oci-containers.containers.prowlarr = {
+      serviceName = "prowlarr";
       image = "ghcr.io/hotio/prowlarr";
-      restart = "unless-stopped";
-      network_mode = mkIf root.hostMode "host";
+      extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = root.uid;
         PGID = root.gid;

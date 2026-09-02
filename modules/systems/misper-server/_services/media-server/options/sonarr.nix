@@ -11,11 +11,10 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    virtualisation.arion.projects.media-server.settings.services.sonarr.service = {
-      container_name = "sonarr";
+    virtualisation.oci-containers.containters.sonarr = {
+      serviceName = "sonarr";
       image = "ghcr.io/hotio/sonarr";
-      restart = "unless-stopped";
-      network_mode = mkIf root.hostMode "host";
+      extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = root.uid;
         PGID = root.gid;

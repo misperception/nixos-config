@@ -11,11 +11,10 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    virtualisation.arion.projects.media-server.settings.services.seerr.service = {
-      container_name = "seerr";
+    virtualisation.oci-containers.containers.seerr = {
+      serviceName = "seerr";
       image = "ghcr.io/hotio/seerr";
-      restart = "unless-stopped";
-      network_mode = mkIf root.hostMode "host";
+      extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = root.uid;
         PGID = root.gid;
