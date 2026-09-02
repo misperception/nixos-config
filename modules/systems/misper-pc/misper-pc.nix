@@ -98,6 +98,7 @@
         };
         virt-manager.enable = true;
       };
+      upgrades.enable = true;
     };
 
     boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.legacy_580 ];

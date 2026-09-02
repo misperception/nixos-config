@@ -30,6 +30,7 @@
         enable = true;
         rootless = true;
       };
+      upgrades.enable = true;
     };
     services.openssh.enable = true;
     users.users.misper = {

@@ -79,6 +79,7 @@
           kvm = true;
         };
       };
+      upgrades.enable = true;
     };
 
     catppuccin = {
