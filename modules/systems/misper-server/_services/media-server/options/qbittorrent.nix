@@ -27,8 +27,8 @@ in {
         image = "lscr.io/linuxserver/qbittorrent:latest";
         extraOptions = mkIf root.hostMode [ "--network=host" ];
         environment = common-config // {
-          WEBUI_PORT = (if !cfg.qui.enable then cfg.ports.webui else 8055);
-          TORRENTING_PORT = cfg.ports.torrenting;
+          WEBUI_PORT = (if !cfg.qui.enable then toString cfg.ports.webui else "8055");
+          TORRENTING_PORT = toString cfg.ports.torrenting;
         };
         volumes = [
           "${root.configDir}/qbittorrent:/config"

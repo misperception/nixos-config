@@ -11,13 +11,13 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    virtualisation.oci-containers.containters.sonarr = {
+    virtualisation.oci-containers.containers.sonarr = {
       serviceName = "sonarr";
       image = "ghcr.io/hotio/sonarr";
       extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
-        PUID = root.uid;
-        PGID = root.gid;
+        PUID = toString root.uid;
+        PGID = toString root.gid;
         WEBUI_PORTS = "${toString cfg.port}/tcp";
         TZ = root.timezone;
       };

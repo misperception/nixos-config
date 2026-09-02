@@ -16,8 +16,8 @@ in {
       image = "ghcr.io/hotio/seerr";
       extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
-        PUID = root.uid;
-        PGID = root.gid;
+        PUID = toString root.uid;
+        PGID = toString root.gid;
         WEBUI_PORTS = "${toString cfg.port}/tcp";
         TZ = root.timezone;
       };
