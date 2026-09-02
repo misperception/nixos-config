@@ -1,0 +1,23 @@
+name: "update flake.lock"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0' 
+
+jobs:
+  nix-flake-update:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - uses: DeterminateSystems/update-flake-lock@main
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Updated nixpkgs
+          branch: master
+          commit_options: '--no-verify --signoff'
+          file_pattern: flake.lock
+          skip_dirty_check: false    
+          skip_fetch: true
