@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: DeterminateSystems/determinate-nix-action@v3
-      - uses: DeterminateSystems/update-flake-lock@main
+      - uses: cachix/install-nix-action@v20
+      - run: nix flake update
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Updated nixpkgs
