@@ -1,5 +1,5 @@
 { inputs, self, ... }: {
-  flake.nixosConfigurations.misper-server = inputs.nixpkgs-stable.lib.nixosSystem rec {
+  flake.nixosConfigurations.misper-server = inputs.nixpkgs.lib.nixosSystem rec {
     system = "x86_64-linux";
     modules = [
       inputs.agenix.nixosModules.default

@@ -2,8 +2,8 @@
   root = config.media-server;
   cfg = root.qbittorrent;
   common-config = {
-    PUID = root.uid;
-    PGID = root.gid;
+    PUID = toString root.uid;
+    PGID = toString root.gid;
     TZ = root.timezone;
   };
 in {
