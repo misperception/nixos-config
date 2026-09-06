@@ -74,7 +74,6 @@
         sway = {
           enable = true;
           package = pkgs.swayfx;
-          nvidiaSupport = true;
         };
       };
       gaming.steam.enable = true;

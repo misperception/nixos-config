@@ -10,15 +10,14 @@
         type = types.package;
         default = pkgs.sway;
       };
-      nvidiaSupport = mkEnableOption "support for NVIDIA proprietary drivers";
     };
     config = mkIf cfg.enable {
       programs.sway = {
         enable = true;
         package = cfg.package;
         extraPackages = [];
-        extraOptions = mkIf cfg.nvidiaSupport [ "--unsupported-gpu" ];
       };
+      environment.variables.SWAY_UNSUPPORTED_GPU = mkIf config.misper.hardware.graphics.nvidia.enable ( mkForce 1 );
 
       # Enable PAM for swaylock
       security.pam.services.swaylock = {
