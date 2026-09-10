@@ -10,6 +10,7 @@
     config = mkIf cfg.enable {
       virtualisation.podman = mkIf cfg.enable {
         enable = mkForce true;
+	extraPackages = [ pkgs.podman-compose ];
 	dockerSocket.enable = mkForce true;
 	autoPrune.enable = cfg.autoPrune;
 	dockerCompat = cfg.alias;

@@ -5,7 +5,7 @@
     vapbot.file = ../../_secrets/vapbot.age;
   };
   virtualisation.oci-containers = {
-    backend = "docker";
+    backend = "podman";
     containers = {
       estanteria-bot = {
         image = "misperception/estanteria-bot";
