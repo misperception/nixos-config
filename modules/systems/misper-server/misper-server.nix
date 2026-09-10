@@ -25,9 +25,10 @@
       keyboard = {
         layoutVariant = "altgr-intl";
       };
-      virtualization.docker = {
+      virtualization.podman = {
         enable = true;
-        rootless = true;
+	autoPrune = true;
+	alias = true;
       };
       upgrades.enable = true;
     };

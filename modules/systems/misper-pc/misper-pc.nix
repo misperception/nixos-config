@@ -91,9 +91,10 @@
         };
       };
       virtualization = {
-        docker = {
+        podman = {
           enable = true;
-          rootless = true;
+	  autoPrune = true;
+	  alias = true;
         };
         virt-manager.enable = true;
       };

@@ -69,9 +69,10 @@
         ime = true;
       };
       virtualization = {
-        docker = {
+        podman = {
           enable = true;
-          rootless = true;
+	  alias = true;
+	  autoPrune = true;
         };
         virt-manager.enable = true;
         virtualbox = {
