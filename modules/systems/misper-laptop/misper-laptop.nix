@@ -76,10 +76,6 @@
 	  autoPrune = true;
         };
         virt-manager.enable = true;
-        virtualbox = {
-          enable = true;
-          kvm = true;
-        };
       };
       upgrades.enable = true;
     };
