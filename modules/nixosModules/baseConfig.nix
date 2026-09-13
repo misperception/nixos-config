@@ -59,7 +59,8 @@
       };
       nix.optimise = {
         automatic = true;
-        dates = [ "20:00" "11:00" ];
+        dates = [ "daily" ];
+        persistent = true;
       };
 
       networking.networkmanager.enable = true;
