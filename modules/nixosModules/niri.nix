@@ -5,7 +5,7 @@
     options.misper.desktop.niri = {
       enable = mkEnableOption "Enable niri";
     };
-    config = {
+    config = mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
         nautilus # File selector
         rofi
