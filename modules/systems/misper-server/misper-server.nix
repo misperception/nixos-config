@@ -27,8 +27,8 @@
       };
       virtualization.podman = {
         enable = true;
-	autoPrune = true;
-	alias = true;
+        autoPrune = true;
+        alias = true;
       };
       upgrades.enable = true;
     };

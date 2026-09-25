@@ -37,7 +37,6 @@ in {
       isSystemUser = true;
       uid = cfg.uid;
       group = "media-server";
-      extraGroups = [ "docker" ];
     };
     users.groups.media-server.gid = cfg.gid;
   };

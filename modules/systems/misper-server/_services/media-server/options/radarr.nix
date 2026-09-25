@@ -14,6 +14,8 @@ in {
     virtualisation.oci-containers.containers.radarr = {
       serviceName = "radarr";
       image = "ghcr.io/hotio/radarr";
+      autoRemoveOnStop = true;
+      pull = "newer";
       extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = toString root.uid;

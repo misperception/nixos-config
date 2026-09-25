@@ -14,6 +14,8 @@ in {
     virtualisation.oci-containers.containers.seerr = {
       serviceName = "seerr";
       image = "ghcr.io/hotio/seerr";
+      autoRemoveOnStop = true;
+      pull = "newer";
       extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = toString root.uid;

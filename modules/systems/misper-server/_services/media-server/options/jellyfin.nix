@@ -14,6 +14,8 @@ in {
     virtualisation.oci-containers.containers.jellyfin = {
       serviceName = "jellyfin";
       image = "ghcr.io/hotio/jellyfin";
+      autoRemoveOnStop = true;
+      pull = "newer";
       extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = toString root.uid;

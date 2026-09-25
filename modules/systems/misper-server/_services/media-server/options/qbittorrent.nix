@@ -25,6 +25,8 @@ in {
       qbittorrent = {
         serviceName = "qbittorrent";
         image = "lscr.io/linuxserver/qbittorrent:latest";
+        autoRemoveOnStop = true;
+        pull = "newer";
         extraOptions = mkIf root.hostMode [ "--network=host" ];
         environment = common-config // {
           WEBUI_PORT = (if !cfg.qui.enable then toString cfg.ports.webui else "8055");
@@ -43,6 +45,9 @@ in {
       qui = mkIf cfg.qui.enable {
         serviceName = "qui";
         image = "ghcr.io/hotio/qui";
+        dependsOn = [ "qbittorrent" ];
+        autoRemoveOnStop = true;
+        pull = "newer";
         extraOptions = mkIf root.hostMode [ "--network=host" ];
         environment = common-config // {
           WEBUI_PORTS = "${toString cfg.ports.webui}/tcp";

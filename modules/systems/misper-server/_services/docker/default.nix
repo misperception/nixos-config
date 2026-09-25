@@ -8,7 +8,7 @@
     backend = "podman";
     containers = {
       estanteria-bot = {
-        image = "misperception/estanteria-bot";
+        image = "docker.io/misperception/estanteria-bot";
         serviceName = "estanteria-bot";
         volumes = [
           "/home/misper/estanteria-bot-data:/app/data"
@@ -18,7 +18,7 @@
         ];
       };
       vapbot = {
-        image = "misperception/vapbot";
+        image = "docker.io/misperception/vapbot";
         serviceName = "vapbot";
         environmentFiles = [
           config.age.secrets.vapbot.path

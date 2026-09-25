@@ -14,6 +14,8 @@ in {
     virtualisation.oci-containers.containers.maintainerr = {
       serviceName = "maintainerr";
       image = "ghcr.io/maintainerr/maintainerr:latest";
+      autoRemoveOnStop = true;
+      pull = "newer";
       user = "${toString root.uid}:${toString root.gid}";
       extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {

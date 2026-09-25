@@ -14,6 +14,8 @@ in {
     virtualisation.oci-containers.containers.sonarr = {
       serviceName = "sonarr";
       image = "ghcr.io/hotio/sonarr";
+      autoRemoveOnStop = true;
+      pull = "newer";
       extraOptions = mkIf root.hostMode [ "--network=host" ];
       environment = {
         PUID = toString root.uid;
