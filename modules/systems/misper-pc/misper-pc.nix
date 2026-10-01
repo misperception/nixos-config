@@ -30,6 +30,7 @@
     misper = {
       base = {
         appimage = true;
+	enableExternalCaches = true;
         firstVersion = "24.05";
         flatpak = true;
         fonts = with pkgs; [
