@@ -19,6 +19,8 @@
         enable = true;
 	dates = mkForce cfg.date;
 	flake = mkForce cfg.path;
+	fixedRandomDelay = true;
+	randomizedDelaySec = "30min";
       };
     };
   };
