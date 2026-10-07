@@ -105,6 +105,8 @@
         packages = cfg.fonts;
       };
 
+      documentation.man.cache.enable = true;
+
       programs.mtr.enable = true;
       programs.gnupg.agent = {
         enable = true;
