@@ -30,7 +30,10 @@
         autoPrune = true;
         alias = true;
       };
-      upgrades.enable = true;
+      upgrades = {
+        enable = true;
+        date = "00:00";
+      };
     };
     services.openssh.enable = true;
     users.users.misper = {

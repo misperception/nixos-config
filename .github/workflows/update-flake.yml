@@ -6,7 +6,7 @@ on:
       timezone: 'Europe/Madrid'
 
 jobs:
-  nix-flake-update:
+  update-flake:
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -16,7 +16,7 @@ jobs:
       - run: nix flake update
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Updated nixpkgs
+          commit_message: Updated flake.lock
           branch: master
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock

@@ -1,0 +1,24 @@
+name: "update nixpkgs"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+      timezone: 'Europe/Madrid'
+
+jobs:
+  update-flake:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v20
+      - run: nix flake update nixpkgs nixpkgs-stable
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Updated nixpkgs
+          branch: master
+          commit_options: '--no-verify --signoff'
+          file_pattern: flake.lock
+          skip_dirty_check: false    
+          skip_fetch: true
