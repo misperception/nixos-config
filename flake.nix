@@ -5,7 +5,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
