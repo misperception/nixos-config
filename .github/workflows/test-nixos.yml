@@ -1,0 +1,36 @@
+name: "Test Configs (NixOS)"
+on: 
+  workflow_dispatch: 
+  pull_request:
+  push: 
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        config:
+          - misper-pc
+          - misper-laptop
+          - misper-server
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: "Free space"
+        uses: wimpysworld/nothing-but-nix@v10
+
+      - name: "Install Nix"
+        uses: cachix/install-nix-action@v31
+        with:
+          extra-nix-config: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+            trusted-users = root runner
+
+      - name: "test syntax (${{matrix.config}})"
+        run: nix build .#nixosConfigurations.${{matrix.config}}.config.system.build.toplevel --dry-run
