@@ -91,6 +91,7 @@
           via = true;
         };
       };
+      lix.enable = true;
       virtualization = {
         podman = {
           enable = true;
