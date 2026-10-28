@@ -88,6 +88,9 @@
       accent = "mauve";
     };
 
+    # Add man-pages for UNIX/POSIX programming reference
+    environment.systemPackages = with pkgs; [ man-pages man-pages-posix ];
+
     users.users.misper = {
       isNormalUser = true;
       extraGroups = [ "wheel" "input" ];
