@@ -5,7 +5,6 @@
   in {
     options.misper.connection.printing = {
       enable = mkEnableOption "Printing";
-      autodiscovery = mkEnableOption "Autodiscovery";
       drivers = mkOption {
         type = types.listOf types.package;
         default = [];
@@ -15,11 +14,6 @@
       services.printing = {
         enable = true;
         drivers = cfg.drivers;
-      };
-
-      services.avahi = mkIf cfg.autodiscovery {
-        enable = true;
-        openFirewall = true;
       };
     };
   };

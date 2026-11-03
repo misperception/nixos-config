@@ -38,7 +38,6 @@
       connection = {
         printing = {
           enable = true;
-          autodiscovery = true;
           drivers = [ pkgs.hplipWithPlugin ];
         };
       };

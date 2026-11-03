@@ -22,6 +22,7 @@
         garbageCollection = true;
         zsh = true;
       };
+      connection.mdns.enable = true;
       keyboard = {
         layoutVariant = "altgr-intl";
       };

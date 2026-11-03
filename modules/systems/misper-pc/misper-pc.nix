@@ -51,9 +51,9 @@
         };
       };
       connection = {
-        printing = {
+        mdns.enable = true;
+	printing = {
           enable = true;
-          autodiscovery = true;
           drivers = [ pkgs.hplipWithPlugin ];
         };
       };
