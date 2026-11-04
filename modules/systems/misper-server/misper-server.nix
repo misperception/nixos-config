@@ -36,6 +36,10 @@
         date = "00:00";
       };
     };
+    nix.sshServe = {
+      write = true;
+      keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGksX8pE5OS0QSiL1/9BAkYf1+/K82HroQviRy11ZMZ5" ];
+    };
     services.openssh.enable = true;
     users.users.misper = {
       isNormalUser = true;
@@ -50,9 +54,6 @@
     programs.neovim = {
       enable = true;
       defaultEditor = true;
-    };
-    environment.shellAliases = {
-      switch = "sudo nixos-rebuild switch --flake /etc/nixos#misper-server";
     };
     services.logind.settings.Login = {                                        
       HandleLidSwitch = "ignore";                                    
