@@ -36,15 +36,19 @@
         date = "00:00";
       };
     };
-    nix.sshServe = {
-      write = true;
-      keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGksX8pE5OS0QSiL1/9BAkYf1+/K82HroQviRy11ZMZ5" ];
-    };
     services.openssh.enable = true;
     users.users.misper = {
       isNormalUser = true;
       extraGroups = [ "wheel" "input" "docker" ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGksX8pE5OS0QSiL1/9BAkYf1+/K82HroQviRy11ZMZ5 misper@misper-pc"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL4ChckQwxT76d16Gg2J0GHshDx9oVHKbubCJhWGXCYH root@misper-pc"
+      ];
     };
+    users.users.root.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGksX8pE5OS0QSiL1/9BAkYf1+/K82HroQviRy11ZMZ5 misper@misper-pc"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL4ChckQwxT76d16Gg2J0GHshDx9oVHKbubCJhWGXCYH root@misper-pc"
+    ];
     boot.kernelParams = [ "quiet" "splash" "consoleblank=10" ];         
     environment.systemPackages = with pkgs; [ gh lazydocker ];
     programs.zoxide = {
