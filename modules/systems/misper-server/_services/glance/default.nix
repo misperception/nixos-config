@@ -3,6 +3,7 @@
   age.secrets = {
     glance.file = ../../_secrets/glance.age;
   };
+  users.extraGroups.podman.members = [ "glance" ];
   services.glance = {
     enable = true;
     openFirewall = true;

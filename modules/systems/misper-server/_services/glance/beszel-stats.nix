@@ -3,7 +3,7 @@
   title = "Server Stats";
   cache = "5m";
   options = {
-    base-url = "http://192.168.1.56:8888";
+    base-url = "http://127.0.0.1:8888";
     api-key = "\${BESZELAPI}";
   };
   template = ''
