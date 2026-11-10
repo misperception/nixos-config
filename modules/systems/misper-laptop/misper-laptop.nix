@@ -44,7 +44,6 @@
       desktop = {
         enable = true;
         xwayland = true;
-        niri.enable = true;
         gnome = {
           enable = true;
           extensions = with pkgs.gnomeExtensions; [ 
