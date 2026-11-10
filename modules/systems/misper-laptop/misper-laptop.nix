@@ -16,7 +16,7 @@
     misper = {
       base = {
         appimage = true;
-	enableExternalCaches = true;
+	      enableExternalCaches = true;
         firstVersion = "24.05";
         flatpak = true;
         fonts = with pkgs; [
@@ -71,8 +71,8 @@
       virtualization = {
         podman = {
           enable = true;
-	  alias = true;
-	  autoPrune = true;
+          alias = true;
+          autoPrune = true;
         };
         virt-manager.enable = true;
       };

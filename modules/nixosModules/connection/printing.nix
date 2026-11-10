@@ -1,20 +1,24 @@
 {
-  flake.nixosModules.customOptions = { pkgs, config, lib, ... }: with lib;
-  let
-    cfg = config.misper.connection.printing;
-  in {
-    options.misper.connection.printing = {
-      enable = mkEnableOption "Printing";
-      drivers = mkOption {
-        type = types.listOf types.package;
-        default = [];
+  flake.nixosModules.customOptions = {
+    config,
+    lib,
+    ...
+  }:
+    with lib; let
+      cfg = config.misper.connection.printing;
+    in {
+      options.misper.connection.printing = {
+        enable = mkEnableOption "Printing";
+        drivers = mkOption {
+          type = types.listOf types.package;
+          default = [];
+        };
+      };
+      config = mkIf cfg.enable {
+        services.printing = {
+          enable = true;
+          drivers = cfg.drivers;
+        };
       };
     };
-    config = mkIf cfg.enable {
-      services.printing = {
-        enable = true;
-        drivers = cfg.drivers;
-      };
-    };
-  };
 }
