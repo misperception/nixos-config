@@ -1,22 +1,29 @@
-{ inputs, self,  ... }: {
+{
+  inputs,
+  self,
+  ...
+}: {
   flake.nixosConfigurations.misper-laptop = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
       self.nixosModules.customOptions
       self.nixosModules.misper-laptop
+      self.nixosModules.homeManager
       inputs.catppuccin.nixosModules.catppuccin
     ];
   };
 
-  flake.nixosModules.misper-laptop = { pkgs, ... }: {
+  flake.nixosModules.misper-laptop = {pkgs, ...}: {
     imports = [
       ./hardware-configuration.nix
     ];
 
+    home-manager.users.misper = self.homeModules.misper-laptop;
+
     misper = {
       base = {
         appimage = true;
-	      enableExternalCaches = true;
+        enableExternalCaches = true;
         firstVersion = "24.05";
         flatpak = true;
         fonts = with pkgs; [
@@ -38,7 +45,7 @@
       connection = {
         printing = {
           enable = true;
-          drivers = [ pkgs.hplipWithPlugin ];
+          drivers = [pkgs.hplipWithPlugin];
         };
       };
       desktop = {
@@ -46,7 +53,7 @@
         xwayland = true;
         gnome = {
           enable = true;
-          extensions = with pkgs.gnomeExtensions; [ 
+          extensions = with pkgs.gnomeExtensions; [
             appindicator # System tray icons
             blur-my-shell
             dash2dock-lite
@@ -87,11 +94,11 @@
     };
 
     # Add man-pages for UNIX/POSIX programming reference
-    environment.systemPackages = with pkgs; [ man-pages man-pages-posix ];
+    environment.systemPackages = with pkgs; [man-pages man-pages-posix];
 
     users.users.misper = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "input" ];
+      extraGroups = ["wheel" "input"];
     };
 
     services.fwupd.enable = true;
