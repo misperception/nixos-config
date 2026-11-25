@@ -1,0 +1,38 @@
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+window#osd {
+    border-radius: 0.5em;
+    border: 3px solid #313244;
+    background: #1e1e2e;
+    animation: fade 0.2s ease-in-out;
+}
+#container {
+    margin: 16px;
+}
+image,
+label {
+    color: #cdd6f4;
+}
+label {
+    font-family: "JetBrainsMono Nerd Font";
+}
+progressbar {
+    border-radius: 1000px;
+    background: transparent;
+    border: none;
+}
+progressbar:disabled,
+image:disabled {
+    opacity: inherit;
+}
+trough {
+    background: #181825;
+}
+progress {
+    background: #cba6f7;
+}
+progress:disabled {
+    background: #313244;
+}

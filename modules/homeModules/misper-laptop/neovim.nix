@@ -19,7 +19,7 @@
         set shiftwidth=2
         set smartindent
         set ttyfast
-          
+        
         nmap <leader>f :FZF<CR>
       '';
     };

@@ -1,0 +1,134 @@
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+* {
+    font-family: 'JetBrainsMono Nerd Font', monospace;
+    background-color: transparent;
+}
+/* Notifications */
+.notification {
+    background-color: #11111b;
+    border-color: #313244;
+    border-width: 3px;
+    transition: background-color 0.2s, border-color 0.2s;
+    * {
+        border-radius: 6px;
+    }
+}
+.notification:hover,
+.notification:focus {
+    background-color: #181825;
+    border-color: #cba6f7;
+}
+.notification-default-action:hover,
+.notification-default-action:focus {
+    background-color: transparent;
+}
+.notification-default-action:hover .time,
+.notification-default-action:focus .time {
+    color: transparent
+}
+.notification-action {
+    background-color: #181825;
+    transition: background-color 0.2s;
+}
+.notification-action:hover {
+    background-color: #1e1e2e;
+}
+.notification-action button {
+    color: #cdd6f4;
+}
+.close-button {
+    background-color: transparent;
+    color: #cdd6f4;
+    transition: color 0.2s;
+}
+.close-button:hover {
+    color: #cba6f7;
+}
+.body,
+.summary {
+    color: #cdd6f4;
+    font-size: 11pt;
+    margin-left: 15pt;
+}
+.time {
+    color: #a6adc8;
+    font-size: 10pt;
+    margin-right: 10pt;
+    transition: color 0.2s;
+}
+.summary {
+    font-weight: bold;
+    margin-bottom: 10pt;
+}
+.image {
+    margin-left: 10pt;
+}
+/* Control center */
+.control-center {
+    background-color: #11111b;
+    margin: 30px 20px 30px 0px;
+    border-radius: 8px;
+    border: 3px solid #313244;
+    box-shadow: 5px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    animation: fade 0.2s ease-in-out;
+}
+.control-center-list-placeholder {
+    opacity: 0;
+}
+.widget-title {
+    color: #cdd6f4;
+    font-size: 12pt;
+    font-weight: bold;
+}
+.widget-title button {
+    color: #cdd6f4;
+    border-radius: 6px;
+    background-color: #1e1e2e;
+    transition: background-color 0.2s, opacity 0.5s;
+    margin-right: 10px;
+}
+.widget-title button:disabled {
+    opacity: 0;
+}
+.widget-title button:hover {
+    background-color: #313244
+}
+/* Music player */
+.widget-mpris {
+    color: #cdd6f4;
+}
+.widget-mpris > box > button {
+    color: #cdd6f4;
+    background-color: #1e1e2e;
+    margin-top: 6.5em;
+    margin-bottom: 6.5em;
+    transition: opacity 0.2s, background-color 0.2s;
+}
+.widget-mpris > box > button:hover {
+    background-color: #313244;
+}
+.widget-mpris > box > button:disabled {
+    opacity: 0;
+}
+.widget-mpris > box {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.widget-mpris-player {
+    background-color: #11111b;
+}
+.mpris-overlay {
+    color: #cdd6f4;
+}
+.mpris-overlay button {
+    margin-top: 10px;
+    color: #cdd6f4;
+    border-radius: 100px;
+    transition: background-color 0.2s;
+}
+.mpris-overlay button:hover {
+    background-color: #11111b;
+}

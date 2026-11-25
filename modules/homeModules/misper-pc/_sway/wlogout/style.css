@@ -1,0 +1,43 @@
+window {
+	background-color: transparent;
+}
+
+button {
+    border-radius: 8pt;
+    margin: 4px;
+    border: 3px solid #313244;
+	font: 12pt "JetBrainsMono Nerd Font", monospace;
+	letter-spacing: -1pt;
+    color: #cdd6f4;
+	background-color: #181825;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+	box-shadow: 0.3em 0.3em 10px #11111b;
+	transition: background-color 0.2s ease-in-out;
+}
+
+button:focus, button:active, button:hover {
+	background-color: #1e1e2e;
+	border-color: #cba6f7;
+	outline: none;
+}
+
+#lock {
+	background-image: url("icons/lock.png");
+}
+#logout {
+	background-image: url("icons/logout.png");
+}
+#suspend {
+	background-image: url("icons/suspend.png");
+}
+#hibernate {
+	background-image: url("icons/hibernate.png");
+}
+#shutdown {
+	background-image: url("icons/shutdown.png");
+}
+#reboot {
+	background-image: url("icons/reboot.png");
+}
