@@ -1,0 +1,54 @@
+* {
+    border: none;
+    background: none;
+    font: 13pt "JetBrainsMono Nerd Font", monospace;
+    color: #cdd6f4;
+}
+.modules-left,
+.modules-center,
+#mpris,
+tooltip,
+#tray menu,
+#tray,
+#stats,
+#misc {
+    background: #11111b;
+    border-radius: 0.5em;
+    padding: 0 0.8em;
+}
+
+.modules-center {
+    font-size: 15pt;
+}
+#workspaces button {
+    padding: 0;
+    background: #181825;
+    margin: 0.5em 0.3em;
+    border-radius: 0.5em;
+}
+#workspaces button.focused {
+    background: #1e1e2e;
+}
+#workspaces button.focused label {
+    color: #cba6f7;
+}
+#workspaces button:hover {
+    background: #cba6f7;
+}
+#workspaces button:hover label {
+    color: #181825;
+}
+#stats *,
+#misc *,
+#mpris *{
+    padding: 0 0.4em;
+}
+#stats label{
+    color: #74c7ec;
+}
+#mpris {
+    color: #89b4fa
+}
+#misc label{
+    color: #cba6f7;
+}

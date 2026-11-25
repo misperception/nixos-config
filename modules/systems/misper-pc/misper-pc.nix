@@ -1,17 +1,25 @@
-{ inputs, self, ... }: {
+{
+  inputs,
+  self,
+  ...
+}: {
   # NixOS configuration
   flake.nixosConfigurations.misper-pc = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
       self.nixosModules.customOptions
       self.nixosModules.misper-pc
+      self.nixosModules.homeManager
       inputs.catppuccin.nixosModules.catppuccin
     ];
   };
 
   # Configuration module
-  flake.nixosModules.misper-pc = { config, pkgs, ... }:
-  let
+  flake.nixosModules.misper-pc = {
+    config,
+    pkgs,
+    ...
+  }: let
     makeDrive = root: {
       device = "/dev/disk/by-uuid/${root}";
       fsType = "ext4";
@@ -21,16 +29,18 @@
       ./hardware-configuration.nix
     ];
 
+    home-manager.users.misper = self.homeModules.misper-pc;
+
     fileSystems = {
-        # 1TB HDD @ /run/media/misper/data
-        "/run/media/misper/data" = (makeDrive "a6ecceb0-3a59-4057-bef3-863453470607");
-        # 128 SDD @ /run/media/misper/games
-        "/run/media/misper/games" = (makeDrive "076e290f-f281-4f77-a44a-a1f9b259d1b4");
+      # 1TB HDD @ /run/media/misper/data
+      "/run/media/misper/data" = makeDrive "a6ecceb0-3a59-4057-bef3-863453470607";
+      # 128 SDD @ /run/media/misper/games
+      "/run/media/misper/games" = makeDrive "076e290f-f281-4f77-a44a-a1f9b259d1b4";
     };
     misper = {
       base = {
         appimage = true;
-	enableExternalCaches = true;
+        enableExternalCaches = true;
         firstVersion = "24.05";
         flatpak = true;
         fonts = with pkgs; [
@@ -52,9 +62,9 @@
       };
       connection = {
         mdns.enable = true;
-	printing = {
+        printing = {
           enable = true;
-          drivers = [ pkgs.hplipWithPlugin ];
+          drivers = [pkgs.hplipWithPlugin];
         };
       };
       desktop = {
@@ -62,7 +72,7 @@
         xwayland = true;
         gnome = {
           enable = true;
-          extensions = with pkgs.gnomeExtensions; [ 
+          extensions = with pkgs.gnomeExtensions; [
             appindicator # System tray icons
             system-monitor # Resource usage
             removable-drive-menu
@@ -95,15 +105,15 @@
       virtualization = {
         podman = {
           enable = true;
-	  autoPrune = true;
-	  alias = true;
+          autoPrune = true;
+          alias = true;
         };
         virt-manager.enable = true;
       };
       upgrades.enable = true;
     };
 
-    boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.legacy_580 ];
+    boot.extraModulePackages = [config.boot.kernelPackages.nvidiaPackages.legacy_580];
 
     catppuccin = {
       enable = true;
@@ -112,25 +122,9 @@
       accent = "mauve";
     };
 
-    networking.firewall = {
-      allowedTCPPorts = [
-        161
-        162
-        8006
-        8023
-        9100
-        11476
-      ];
-      allowedUDPPorts = [
-        161
-        162
-        9100
-      ];
-    };
-
     users.users.misper = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "input" ];
+      extraGroups = ["wheel" "input"];
     };
   };
 }
