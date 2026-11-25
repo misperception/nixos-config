@@ -1,5 +1,5 @@
 {
-  flake.homeModules.misper-laptop = {
+  flake.homeModules.misper-pc = {
     programs.hyfetch = {
       enable = true;
       settings = {

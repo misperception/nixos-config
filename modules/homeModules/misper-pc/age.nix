@@ -1,5 +1,6 @@
-{
+{inputs, ...}: {
   flake.homeModules.misper-pc = {
+    imports = [inputs.agenix.homeManagerModules.default];
     age = {
       secrets = {
         proton-user.file = ./_secrets/proton/user.age;

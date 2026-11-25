@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.homeModules.misper-laptop = {pkgs, ...}: let
+  flake.homeModules.misper-pc = {pkgs, ...}: let
     spicetifyPkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
     imports = [inputs.spicetify-nix.homeManagerModules.default];

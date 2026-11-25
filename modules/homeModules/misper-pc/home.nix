@@ -1,9 +1,14 @@
-{
+{inputs, ...}: {
   flake.homeModules.misper-pc = {pkgs, ...}: {
     home.username = "misper";
     home.homeDirectory = "/home/misper";
 
     home.stateVersion = "24.05";
+
+    imports = [
+      inputs.catppuccin.homeModules.default
+      inputs.nix-index.homeModules.default
+    ];
 
     # Catppuccin configuration
     catppuccin = {

@@ -9,7 +9,7 @@
     modules = [
       self.nixosModules.customOptions
       self.nixosModules.misper-pc
-      self.nixosModules.home-manager
+      self.nixosModules.homeManager
       inputs.catppuccin.nixosModules.catppuccin
     ];
   };
