@@ -1,19 +1,23 @@
-{ inputs, self, ... }: {
+{
+  inputs,
+  self,
+  ...
+}: {
   flake.nixosConfigurations.misper-server = inputs.nixpkgs.lib.nixosSystem rec {
     system = "x86_64-linux";
     modules = [
       inputs.agenix.nixosModules.default
       inputs.github-nix-ci.nixosModules.default
       self.nixosModules.customOptions
+      self.nixosModules.media-server
       self.nixosModules.misper-server
-      { environment.systemPackages = [inputs.agenix.packages.${system}.default]; }
+      {environment.systemPackages = [inputs.agenix.packages.${system}.default];}
     ];
   };
 
-  flake.nixosModules.misper-server = { pkgs, ... }: {
-    imports = [ 
+  flake.nixosModules.misper-server = {pkgs, ...}: {
+    imports = [
       ./hardware-configuration.nix
-      ./_services
     ];
     misper = {
       base = {
@@ -36,10 +40,17 @@
         date = "00:00";
       };
     };
+    age.secrets = {
+      caddy.file = ./_secrets/caddy.age;
+      beszel.file = ./_secrets/beszel.age;
+      estanteria-bot.file = ./_secrets/estanteria-bot.age;
+      vapbot.file = ./_secrets/vapbot.age;
+      glance.file = ./_secrets/glance.age;
+    };
     services.openssh.enable = true;
     users.users.misper = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "input" ];
+      extraGroups = ["wheel" "input"];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGksX8pE5OS0QSiL1/9BAkYf1+/K82HroQviRy11ZMZ5 misper@misper-pc"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL4ChckQwxT76d16Gg2J0GHshDx9oVHKbubCJhWGXCYH root@misper-pc"
@@ -48,8 +59,8 @@
     users.users.root.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL4ChckQwxT76d16Gg2J0GHshDx9oVHKbubCJhWGXCYH root@misper-pc"
     ];
-    boot.kernelParams = [ "quiet" "splash" "consoleblank=10" ];         
-    environment.systemPackages = with pkgs; [ gh lazydocker ];
+    boot.kernelParams = ["quiet" "splash" "consoleblank=10"];
+    environment.systemPackages = with pkgs; [gh lazydocker];
     programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
@@ -58,9 +69,9 @@
       enable = true;
       defaultEditor = true;
     };
-    services.logind.settings.Login = {                                        
-      HandleLidSwitch = "ignore";                                    
-      HandleLidSwitchExternalPower = "ignore";                       
+    services.logind.settings.Login = {
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
     };
     networking.interfaces.enp2s0.ipv4.addresses = [
       {
@@ -69,11 +80,11 @@
       }
     ];
     networking.defaultGateway = "192.168.1.1";
-    networking.nameservers = [ "8.8.8.8" ];
+    networking.nameservers = ["8.8.8.8"];
     networking.firewall.allowedTCPPorts = [
       80
       443
       8888
     ];
-  }; 
+  };
 }
